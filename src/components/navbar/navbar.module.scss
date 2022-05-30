@@ -29,6 +29,7 @@
   svg {
     grid-area: icon;
     justify-self: flex-end;
+    cursor: pointer;
     @include b.breakpoint('medium') {
       display: none;
     }
