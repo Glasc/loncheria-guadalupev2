@@ -1,0 +1,55 @@
+@use '../../styles/abstracts/_mixins.scss' as m;
+@use '../../styles/helpers/_breakpoints.scss' as b;
+
+.nav {
+  @include b.breakpoint('medium') {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'logo list';
+  }
+
+  @include m.appContainer;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'logo icon'
+    'list list';
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+  gap: 1.5em;
+
+  .logo {
+    grid-area: logo;
+    font-size: 1.5rem;
+    color: var(--color-logo);
+    white-space: nowrap;
+  }
+
+  svg {
+    grid-area: icon;
+    justify-self: flex-end;
+    @include b.breakpoint('medium') {
+      display: none;
+    }
+  }
+
+  .list {
+    grid-area: list;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    color: var(--text-primary);
+    li:before {
+      content: '> ';
+    }
+    @include b.breakpoint('medium') {
+      flex-direction: row;
+      justify-content: flex-end;
+      li:before {
+        content: '';
+      }
+    }
+  }
+}
